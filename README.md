@@ -1,7 +1,3 @@
 # CPSC4125_Github_Intro
 
-Testing
-
-Hello there!
-
-How are you
+https://github.com/MikeVita4/CPSC4125_Montiel_lab1
