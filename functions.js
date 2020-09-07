@@ -1,46 +1,63 @@
-$(document).ready(function() {
-    const a; // doesn't change
-    var b = 1; // can change, larger scope
-    let c = 2; // never change, smaller scope
-
-    if ( b==2 ) { // falsy == !=
-
-    } else if( c === 3 ){ // same type === !==
-
-    } else {
-
-    }
-
-    var d = b ==2 && c ===1 ? "yes": a != null ? "yes" : "no"; //ternary condition ? true : false return (ternary)
-
-    // basic arithmetic + - x /, modulus, 1 + 1 -11 not always going to be 1
-
-    // string, number, array [], json {}
-
-    //array[]
-    //sort, forEach, push, pop, shift
-
-    var xkcdJson = {"title": "Standard Model Changes",
-                    day: "26"}
-    var xkcdDay = xkcdJson.day
+(function(){
+	// Vars
     
-    // GET, PUT, POST, DELETE  |  CREATE, RETRIEVE, UPDATE, DELETE
+	var list = document.getElementById("list"),
+		todosInput = document.getElementById("todosInput"),
+		btnNewTodos = document.getElementById("btn-add");
 
-    for(var i = 0; i < something; i++){
 
-    }
-    something.forEach()
+	// Functions
+	var addTodos = function(){
+		var tarea = todosInput.value;
+        newTodos = document.createElement("li");
+        link = document.createElement("a");
+        content = document.createTextNode(tarea);
 
-    function firstFunction(variables){
-        // process input
-        return variables;
-        // return something
-    }
+		if (tarea === "") {
+			todosInput.setAttribute("placeholder", "Add valid workout");
+			todosInput.className = "error";
+			return false;
+		}
+
+		// Add content to the link
+        link.appendChild(content);
+        
+		link.setAttribute("href", "#");
+		// Add the link (a) to the new Todo (li)
+		newTodos.appendChild(link);
+		// Add new Todo to list
+		list.appendChild(newTodos);
+
+		todosInput.value = "";
+
+        // Deletes prepopulated elements on click
+		for (var i = 0; i <= list.children.length -1; i++) {
+			list.children[i].addEventListener("click", function(){
+				this.parentNode.removeChild(this);
+			});
+		}
+
+	};
+	var checkInput = function(){
+		todosInput.className = "";
+		todosInput.setAttribute("placeholder", "Add your workout");
+	};
+
+	var deleteTodos = function(){
+		this.parentNode.removeChild(this);
+	};
+
+	// Events
+
+	// Add todos
+	btnNewTodos.addEventListener("click", addTodos);
+
+	// Check Input
+	todosInput.addEventListener("click", checkInput);
+
+	// Delete list elements
+	for (var i = 0; i <= list.children.length -1; i++) {
+		list.children[i].addEventListener("click", deleteTodos);
+	}
     
-    Promise(function(){
-        setTimeout(x);
-        //what you are waiting
-    })
-
-    console.log(variableName);
-});
+}());
