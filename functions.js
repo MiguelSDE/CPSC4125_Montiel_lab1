@@ -11,7 +11,8 @@
 		var tarea = todosInput.value;
         newTodos = document.createElement("li");
         link = document.createElement("a");
-        content = document.createTextNode(tarea);
+        link.className = "list-group-item list-group-item-light";
+        content = document.createTextNode(tarea); 
 
 		if (tarea === "") {
 			todosInput.setAttribute("placeholder", "Add valid workout");
